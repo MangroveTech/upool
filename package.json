@@ -1,18 +1,31 @@
 {
   "name": "upool",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "description": "Job queue pool for each user.",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MangroveTech/upool.git"
+  },
+  "keywords": [
+    "async",
+    "pool",
+    "queue"
+  ],
   "scripts": {
     "test": "node ./test/test.js"
   },
-  "author": "lixiaojun",
-  "license": "ISC",
+  "author": {
+    "name": "lixiaojun",
+    "email": "cn.lixiaojun@gmail.com"
+  },
+  "license": "MIT",
   "dependencies": {
-    "async": "0.9.0"
+    "async": "0.9.0",
+    "hashring": "2.0.2"
   },
   "devDependencies": {
-    "tape": "2.12.3",
-    "debug": "0.8.1"
+    "tape": "2.14.0",
+    "debug": "1.0.2"
   }
 }
