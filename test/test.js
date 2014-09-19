@@ -6,13 +6,14 @@ var test = require('tape');
 test('Test UQueue', function (t) {
   t.plan(6);
   var upool = new UPool(1, {
+    concurrency: 2,
     init: function () {
       this.name = 'lixiaojun';
     },
     job: function (task, next) {
       t.deepEqual(this.name, 'lixiaojun');
+      t.ok(this._queue.concurrency === 2, 'Concurrency of queue should equal to 2.');
       t.ok(task, 'Task should be a object.');
-      t.ok(this._queueId, 'UQueue ID should not be empty.');
       t.ok(this._queue, 'Queue should not be null.');
       t.ok(this.status(), 'uqueue.status() should return a object.');
       next();
@@ -25,13 +26,14 @@ test('Test UQueue', function (t) {
 });
 
 test('Test UPool', function (t) {
-  t.plan(13);
+  t.plan(14);
   var upool = new UPool(2, {
     init: function () {
       this.name = 'name';
     },
     job: function (task, next) {
       t.ok(task, 'Task should be a object.');
+      t.ok(this._queue.concurrency === 1, 'Concurrency of queue should equal to 1.');
       t.deepEqual(this.name, 'name', 'init method should be called.');
       t.ok(typeof this.destroy === 'function', 'this.destroy should be function.');
       t.ok(typeof this.custom1 === 'function', 'this.custom1 should be function.');
@@ -39,6 +41,7 @@ test('Test UPool', function (t) {
       next();
     },
     destroy: function () {
+      //pool.size is 2, so it will be called twice.
       t.ok(true, 'destroy should be called.');
     },
     customs: {

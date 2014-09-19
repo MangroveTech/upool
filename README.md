@@ -13,6 +13,7 @@ $ npm install upool --save
 
 ```js
 var upool = new UPool(2, {
+  concurrency: 1,
   init: function () {
     this.name = 'name';
   },

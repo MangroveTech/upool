@@ -1,6 +1,6 @@
 {
   "name": "upool",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Job queue pool for each user.",
   "main": "index.js",
   "repository": {
